@@ -7,10 +7,15 @@ import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {MaterialModule} from "@angular/material";
+import {AddItemDialogComponent} from "./add-item-dialog.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddItemDialogComponent
+  ],
+  entryComponents: [
+    AddItemDialogComponent
   ],
   imports: [
     BrowserModule,

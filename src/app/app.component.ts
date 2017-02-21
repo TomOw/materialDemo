@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {Item} from "./item";
 import {Http} from "@angular/http";
+import {MdDialog} from "@angular/material";
+import {AddItemDialogComponent} from "./add-item-dialog.component";
 
 @Component({
   selector: 'app-root',
@@ -12,13 +14,21 @@ export class AppComponent implements OnInit {
 
   items: Item[];
 
+  selectedOption: string;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private mdDialog: MdDialog) {
   };
 
   ngOnInit(): void {
     this.getData();
   };
+
+  openDialog(){
+    let dialog = this.mdDialog.open(AddItemDialogComponent);
+    dialog.afterClosed().subscribe(result => {
+      this.selectedOption = result;
+    })
+  }
 
   getData(): void {
     this.http.get('../app/data.json')

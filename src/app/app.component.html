@@ -22,15 +22,22 @@
 
 <md-tab-group>
   <md-tab label="Gallery">
+
+    <button md-raised-button color="primary" (click)="openDialog()">
+      Add Item<md-icon>add</md-icon>
+    </button>
+
     <md-card *ngFor="let item of items; let i = index">
       <md-card-content>
+        <p>{{item.id}}</p>
         <p>{{item.name}}</p>
+        <p>{{item.price | currency}}</p>
       </md-card-content>
       <md-card-actions>
-        <button md-button (click)="like(i)">
+        <button md-raised-button (click)="like(i)">
           <i class="material-icons md-18 transtion-color" [class.red-color]="item.liked">favorite</i> LIKE
         </button>
-        <button md-button (click)="deleteItem(i)">
+        <button md-raised-button (click)="deleteItem(i)">
           <i class="material-icons md-18">delete</i> DELETE
         </button>
       </md-card-actions>
