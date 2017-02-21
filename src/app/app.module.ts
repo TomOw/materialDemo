@@ -8,6 +8,7 @@ import {HttpModule} from '@angular/http';
 import {AppComponent} from './app.component';
 import {MaterialModule} from "@angular/material";
 import {AddItemDialogComponent} from "./add-item-dialog.component";
+import {ItemService} from "./item.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import {AddItemDialogComponent} from "./add-item-dialog.component";
     HttpModule,
     MaterialModule.forRoot(),
   ],
-  providers: [],
+  providers: [ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

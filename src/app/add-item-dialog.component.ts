@@ -3,6 +3,7 @@
  */
 import {Component} from "@angular/core";
 import {MdDialogRef} from "@angular/material";
+import {Item} from "./item";
 @Component({
   selector: 'add-item-dialog',
   templateUrl: '../app/add-item-dialog.component.html'
@@ -11,4 +12,6 @@ import {MdDialogRef} from "@angular/material";
 export class AddItemDialogComponent {
 
   constructor(public dialog: MdDialogRef<AddItemDialogComponent>){}
+
+  newItem: Item = new Item(0, '', 0, false);
 }

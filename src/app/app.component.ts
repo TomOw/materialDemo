@@ -3,6 +3,7 @@ import {Item} from "./item";
 import {Http} from "@angular/http";
 import {MdDialog} from "@angular/material";
 import {AddItemDialogComponent} from "./add-item-dialog.component";
+import {ItemService} from "./item.service";
 
 @Component({
   selector: 'app-root',
@@ -14,27 +15,28 @@ export class AppComponent implements OnInit {
 
   items: Item[];
 
-  selectedOption: string;
+  newItem: Item;
 
-  constructor(private http: Http, private mdDialog: MdDialog) {
+  constructor(private itemService: ItemService, private http: Http, private mdDialog: MdDialog) {
   };
 
   ngOnInit(): void {
-    this.getData();
+    this.getItems();
   };
 
   openDialog(){
     let dialog = this.mdDialog.open(AddItemDialogComponent);
-    dialog.afterClosed().subscribe(result => {
-      this.selectedOption = result;
+    dialog.afterClosed().subscribe(newItem => {
+      this.newItem = newItem;
+      this.newItem.id = this.itemService.getNextId();
+      this.itemService.addItem(newItem);
+      console.log(newItem);
     })
   }
 
-  getData(): void {
-    this.http.get('../app/data.json')
-      .map(response => response.json())
-      .subscribe(res => this.items = res);
-  };
+  private getItems(): void {
+    this.itemService.getItems().then(items => this.items = items);
+  }
 
   like(i): void {
     this.items[i].liked = !this.items[i].liked;
