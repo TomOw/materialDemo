@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
 
 .spacer {
@@ -9,5 +8,13 @@
 }
 
 .red-color {
-  color:red;
+  color: red;
+}
+
+.transtion-color {
+  -webkit-transition: color 0.2s ease-in-out;
+  -moz-transition: color 0.2s ease-in-out;
+  -ms-transition: color 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
 }
