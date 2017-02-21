@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "book",
+    "price": 10.99,
+    "likes": 5
+  },
+  {
+    "id": 2,
+    "name": "bulb",
+    "price": 1.99,
+    "likes": 1
+  },
+  {
+    "id": 3,
+    "name": "window",
+    "price": 200,
+    "likes": 1
+  },
+  {
+    "id": 4,
+    "name": "phone",
+    "price": 299.50,
+    "likes": 5
+  },
+  {
+    "id": 5,
+    "name": "cart",
+    "price": 140.99,
+    "likes": 190
+  }
+]
