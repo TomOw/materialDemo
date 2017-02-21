@@ -22,7 +22,7 @@ import {ItemService} from "./item.service";
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
   ],
   providers: [ItemService],
   bootstrap: [AppComponent]
