@@ -1,50 +1,60 @@
 <md-toolbar color="primary">
-  <span>Tolbar</span>
-  <span class="spacer"></span>
-  <button md-icon-button [mdMenuTriggerFor]="menu">
-    <md-icon>more_vert</md-icon>
-  </button>
-  <md-menu #menu="mdMenu">
-    <button md-menu-item>
-      <md-icon>fingerprint</md-icon>
-      <span>Login</span>
-    </button>
-    <button md-menu-item disabled>
-      <md-icon>announcement</md-icon>
-      <span>Issues</span>
-    </button>
-    <button md-menu-item>
-      <md-icon>notifications_off</md-icon>
-      <span>Disable alerts</span>
-    </button>
-  </md-menu>
+	<span>Tolbar</span>
+	<span class="spacer"></span>
+	<button md-icon-button [mdMenuTriggerFor]="menu">
+		<md-icon>more_vert</md-icon>
+	</button>
+	<md-menu #menu="mdMenu">
+		<button md-menu-item>
+			<md-icon>fingerprint</md-icon>
+			<span>Login</span>
+		</button>
+		<button md-menu-item disabled>
+			<md-icon>announcement</md-icon>
+			<span>Issues</span>
+		</button>
+		<button md-menu-item>
+			<md-icon>notifications_off</md-icon>
+			<span>Disable alerts</span>
+		</button>
+	</md-menu>
 </md-toolbar>
 
 <md-tab-group>
-  <md-tab label="Gallery">
+	<md-tab label="Gallery">
 
-    <button md-raised-button color="primary" (click)="openDialog()">
-      Add Item<md-icon>add</md-icon>
-    </button>
+		<div style="display: flex; flex-direction: row">
+			<button style="margin: 25px" md-raised-button color="primary" (click)="openDialog()">
+				Add Item
+				<md-icon>add</md-icon>
+			</button>
+			<button style="margin: 25px" md-raised-button color="primary" (click)="copyItem()">
+				Copy Item
+				<md-icon>content_copy</md-icon>
+			</button>
+		</div>
 
-    <md-card *ngFor="let item of items; let i = index">
-      <md-card-content>
-        <p>{{item.id}}</p>
-        <p>{{item.name}}</p>
-        <p>{{item.price | currency}}</p>
-      </md-card-content>
-      <md-card-actions>
-        <button md-raised-button (click)="like(i)">
-          <i class="material-icons md-18 transtion-color" [class.red-color]="item.liked">favorite</i> LIKE
-        </button>
-        <button md-raised-button (click)="deleteItem(i)">
-          <i class="material-icons md-18">delete</i> DELETE
-        </button>
-      </md-card-actions>
-    </md-card>
-  </md-tab>
-  <md-tab label="Settings">
+		<div style="display: flex; flex-direction: row; flex-wrap: wrap">
+			<md-card [ngClass]="{'fresh': item.fresh, 'new-item': item.fresh, 'old': !item.fresh}" class="item-card"
+					 *ngFor="let item of items; let i = index">
+				<md-card-content>
+					<p>{{item.id}}</p>
+					<p>{{item.name}}</p>
+					<p>{{item.price | currency}}</p>
+				</md-card-content>
+				<md-card-actions>
+					<button md-raised-button (click)="like(i)">
+						<i class="material-icons md-18 transtion-color" [class.red-color]="item.liked">favorite</i> LIKE
+					</button>
+					<button md-raised-button (click)="deleteItem(i)">
+						<i class="material-icons md-18">delete</i> DELETE
+					</button>
+				</md-card-actions>
+			</md-card>
+		</div>
+	</md-tab>
+	<md-tab label="Settings">
 
-  </md-tab>
+	</md-tab>
 </md-tab-group>
 

@@ -4,16 +4,18 @@
 
 export class Item {
 
-  id: number;
-  name: string;
-  price: number;
-  liked: boolean;
+	id: number;
+	name: string;
+	price: number;
+	liked: boolean;
+	fresh: boolean;
 
 
-  constructor(id: number, name: string, price: number, liked: boolean) {
-    this.id = id;
-    this.name = name;
-    this.price = price;
-    this.liked = liked;
-  }
+	constructor(id: number, name: string, price: number, liked: boolean) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.liked = liked;
+		this.fresh = false;
+	}
 }

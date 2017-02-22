@@ -6,44 +6,56 @@ import {AddItemDialogComponent} from "./add-item-dialog.component";
 import {ItemService} from "./item.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app works!';
+	title = 'app works!';
 
-  items: Item[];
+	items: Item[];
 
-  newItem: Item;
+	newItem: Item;
 
-  constructor(private itemService: ItemService, private http: Http, private mdDialog: MdDialog) {
-  };
+	constructor(private itemService: ItemService, private http: Http, private mdDialog: MdDialog) {
+	};
 
-  ngOnInit(): void {
-    this.getItems();
-  };
+	ngOnInit(): void {
+		this.getItems();
+	};
 
-  openDialog(){
-    let dialog = this.mdDialog.open(AddItemDialogComponent);
-    dialog.afterClosed().subscribe(newItem => {
-      this.newItem = newItem;
-      this.newItem.id = this.itemService.getNextId();
-      this.itemService.addItem(newItem);
-      console.log(newItem);
-    })
-  }
+	openDialog() {
+		let dialog = this.mdDialog.open(AddItemDialogComponent);
+		dialog.afterClosed().subscribe(newItem => {
+			this.newItem = newItem;
+			this.newItem.id = this.itemService.getNextId();
+			this.itemService.addItem(newItem);
+			console.log(newItem);
+		})
+	}
 
-  private getItems(): void {
-    this.itemService.getItems().then(items => this.items = items);
-  }
+	copyItem() {
+		let item: Item;
+		let random: number = Math.floor(Math.random() * this.items.length);
+		console.log(random);
+		item = Object.assign({}, this.items[random]);
+		console.log(item);
+		item.id = this.itemService.getNextId();
+		item.liked = false;
+		item.fresh = true;
+		this.itemService.addItem(item);
+	}
 
-  like(i): void {
-    this.items[i].liked = !this.items[i].liked;
-    console.log('liked ' + this.items[i].name);
-  };
+	private getItems(): void {
+		this.itemService.getItems().then(items => this.items = items);
+	}
 
-  deleteItem(i): void {
-    this.items.splice(i, 1);
-  }
+	like(i): void {
+		this.items[i].liked = !this.items[i].liked;
+		console.log('liked ' + this.items[i].name);
+	};
+
+	deleteItem(i): void {
+		this.items.splice(i, 1);
+	}
 }

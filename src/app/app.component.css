@@ -1,0 +1,75 @@
+md-card.item-card {
+	margin: 10px;
+	background-color: #9c9c9c;
+	overflow: hidden;
+	transition: all 500ms linear;
+}
+
+.new-item {
+	/* 0 does not work so we have to use a small number */
+	/* Start our small */
+	/*flex: .00001;*/
+
+	opacity: 0;
+
+	background: rgba(0, 0, 0, .4);
+
+	-webkit-animation: flexGrow 500ms ease forwards;
+	-o-animation: flexGrow 500ms ease forwards;
+	animation: flexGrow 1000ms ease forwards;
+}
+
+.fresh {
+	background-color: red !important;
+}
+
+.old {
+	background-color: teal !important;
+
+	animation: slideIn 1000ms linear;
+}
+
+@-webkit-keyframes flexGrow {
+	to {
+		flex: 1;
+	}
+}
+
+@-o-keyframes flexGrow {
+	to {
+		flex: 1;
+	}
+}
+
+@keyframes flexGrow {
+	to {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes flexShrink {
+	to {
+		flex: .01;
+		flex: .00001;
+	}
+}
+
+@-o-keyframes flexShrink {
+	to {
+		flex: .01;
+		flex: .00001;
+	}
+}
+
+@keyframes flexShrink {
+	to {
+		flex: .01;
+		flex: .00001;
+	}
+}
+
+@keyframes slideIn {
+	to {
+		position: static;
+	}
+}
