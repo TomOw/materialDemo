@@ -1,0 +1,33 @@
+.example-container {
+	height: 100%;
+}
+
+.example-sidenav-content {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+}
+
+.example-sidenav {
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+}
+
+.sidenav-element {
+	width: 100%;
+	text-align: left;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #555;
+}
+
+.divider {
+	width: 100%;
+	border-bottom: 1px solid black;
+}
+
+md-icon {
+	color: #555;
+}

@@ -8,7 +8,7 @@ import {ItemService} from "./item.service";
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.css']
+	styleUrls: ['./app.component.css', './sidenav.css']
 })
 export class AppComponent implements OnInit {
 	title = 'app works!';
